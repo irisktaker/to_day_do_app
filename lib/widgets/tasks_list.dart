@@ -28,6 +28,11 @@ class _TasksListState extends State<TasksList> {
         return TaskTile(
           taskTitle: tasks[index].name,
           isChecked: tasks[index].isDone,
+          checkboxChange: (value) {
+            setState(() {
+              tasks[index].doneChange();
+            });
+          },
         );
       },
     );
