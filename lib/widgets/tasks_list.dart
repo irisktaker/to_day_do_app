@@ -22,6 +22,11 @@ class TasksList extends StatelessWidget {
                   taskData.tasks[index],
                 );
               },
+              listTileDelete: () {
+                taskData.deleteTask(
+                  taskData.tasks[index],
+                );
+              },
             );
           },
         );
