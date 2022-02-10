@@ -33,7 +33,14 @@ class _TasksScreenState extends State<TasksScreen> {
                 padding: EdgeInsets.only(
                   bottom: MediaQuery.of(context).viewInsets.bottom,
                 ),
-                child: const AddTasksScreen(),
+                child: AddTasksScreen((newTaskTitle) {
+                  setState(() {
+                    tasks.add(
+                      Task(name: newTaskTitle),
+                    );
+                    Navigator.pop(context);
+                  });
+                }),
               ),
             ),
           );
@@ -50,7 +57,7 @@ class _TasksScreenState extends State<TasksScreen> {
             top: 10,
             left: 20,
             right: 20,
-            bottom: 80,
+            bottom: 40,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,9 +85,9 @@ class _TasksScreenState extends State<TasksScreen> {
               const SizedBox(
                 height: 14,
               ),
-              const Text(
-                "4 Tasks",
-                style: TextStyle(
+              Text(
+                "${tasks.length} Tasks",
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                 ),
